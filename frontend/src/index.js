@@ -11,6 +11,16 @@ root.render(
   </React.StrictMode>
 );
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+import { HashRouter as Router } from "react-router-dom";
+
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById('root')
+);
+
+                                                            
 
 
 // If you want to start measuring performance in your app, pass a function
