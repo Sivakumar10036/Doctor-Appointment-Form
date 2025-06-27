@@ -42,4 +42,8 @@ const Form = () => {
   );
 };
 
+// ✅ Change this to your deployed backend API URL
+await axios.post("https://your-backend-url.onrender.com/api/appointments", formData);
+
+
 export default Form;
