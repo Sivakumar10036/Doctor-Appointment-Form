@@ -1,23 +1,11 @@
-import React from 'react';
-import AppointmentForm from './components/AppointmentForm'; // ✅ this path must be correct
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <AppointmentForm />
-    </div>
-  );
-}
-
-export default App;
-// frontend/src/App.js
+// src/App.js
 import React from "react";
-import Form from "./components/Form";
+import Form from "./components/Form"; // Correct path
 
 function App() {
   return (
     <div>
+      <h1>Doctor-Appointment-Form</h1>
       <Form />
     </div>
   );
