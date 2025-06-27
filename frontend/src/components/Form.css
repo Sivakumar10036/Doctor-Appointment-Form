@@ -1,0 +1,75 @@
+/* Global form container styling */
+.appointment-form {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.appointment-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #2c3e50;
+  letter-spacing: 1px;
+}
+
+/* Input and textarea styles */
+.appointment-form input,
+.appointment-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: 0.2s ease-in-out;
+  background-color: #f9f9f9;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.appointment-form input:focus,
+.appointment-form textarea:focus {
+  border-color: #5e72e4;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(94, 114, 228, 0.3);
+  outline: none;
+}
+
+/* Textarea specific */
+.appointment-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Button styling */
+.appointment-form button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #5e72e4, #825ee4);
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(94, 114, 228, 0.3);
+}
+
+.appointment-form button:hover {
+  background: linear-gradient(135deg, #4c60db, #704bdc);
+  transform: translateY(-2px);
+}
+
+/* Status message */
+.appointment-form p {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 500;
+  color: #444;
+}

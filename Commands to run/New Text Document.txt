@@ -1,0 +1,10 @@
+1.Setup Backend
+cd backend
+npm install express mongoose cors dotenv
+node server.js
+
+
+3. Setup Frontend
+cd frontend
+npx create-react-app .
+npm start
