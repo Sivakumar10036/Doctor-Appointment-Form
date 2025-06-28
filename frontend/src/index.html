@@ -4,104 +4,132 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Doctor Appointment Form</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #8EC5FC, #E0C3FC);
+      background: #f5f9ff;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      padding: 20px;
     }
 
     .container {
-      background: white;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      width: 100%;
       max-width: 500px;
+      margin: 30px auto;
+      padding: 30px;
+      background: #fff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 25px;
-      color: #333;
+      color: #2c3e50;
     }
 
     label {
+      font-weight: 600;
       display: block;
       margin-top: 15px;
-      font-weight: 600;
     }
 
-    input, select, textarea {
+    input, textarea {
       width: 100%;
       padding: 12px;
-      margin-top: 6px;
+      margin-top: 5px;
       border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
+      border-radius: 8px;
+      font-size: 16px;
     }
 
     button {
       margin-top: 20px;
       width: 100%;
-      background-color: #4CAF50;
-      color: white;
       padding: 12px;
-      font-size: 16px;
+      background: #007bff;
+      color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     button:hover {
-      background-color: #45a049;
+      background: #0056b3;
     }
 
     .success {
       color: green;
       text-align: center;
-      margin-top: 15px;
+      margin-top: 20px;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>Doctor Appointment Form</h2>
-    <form id="appointmentForm">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" required>
+<div class="container">
+  <h2>Book Doctor Appointment</h2>
+  <form id="appointmentForm">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" required />
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" required />
 
-      <label for="date">Preferred Date</label>
-      <input type="date" id="date" required>
+    <label for="date">Date</label>
+    <input type="date" id="date" required />
 
-      <label for="time">Preferred Time</label>
-      <input type="time" id="time" required>
+    <label for="time">Time</label>
+    <input type="time" id="time" required />
 
-      <label for="reason">Reason for Visit</label>
-      <textarea id="reason" rows="4" required></textarea>
+    <label for="reason">Reason</label>
+    <textarea id="reason" rows="3" required></textarea>
 
-      <button type="submit">Book Appointment</button>
-      <div class="success" id="successMessage" style="display: none;">Appointment booked successfully!</div>
-    </form>
-  </div>
+    <button type="submit">Book Appointment</button>
+    <div id="message"></div>
+  </form>
+</div>
 
-  <script>
-    document.getElementById("appointmentForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      // You can replace this with actual API POST request
-      document.getElementById("successMessage").style.display = "block";
-      this.reset();
-    });
-  </script>
+<script>
+  const form = document.getElementById("appointmentForm");
+  const message = document.getElementById("message");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const appointment = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      date: document.getElementById("date").value,
+      time: document.getElementById("time").value,
+      reason: document.getElementById("reason").value,
+    };
+
+    try {
+      const res = await fetch("https://your-backend-api.onrender.com/api/appointment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(appointment),
+      });
+
+      if (res.ok) {
+        message.innerHTML = `<p class="success">Appointment booked successfully!</p>`;
+        form.reset();
+      } else {
+        throw new Error("Server error");
+      }
+    } catch (err) {
+      console.error(err);
+      message.innerHTML = `<p class="error">Failed to book appointment. Please try again later.</p>`;
+    }
+  });
+</script>
+
 </body>
 </html>
